@@ -1,0 +1,632 @@
+/* ===== Global ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5f5f7;
+  --bg-card: #ffffff;
+  --bg-deep: #0f172a;
+  --bg-hero-from: #16a34a;
+  --bg-hero-via: #15803d;
+  --bg-hero-to: #14532d;
+
+  --border-soft: rgba(15, 23, 42, 0.1);
+
+  --green: #16a34a;
+  --green-soft: #bbf7d0;
+  --red-soft: #fee2e2;
+  --yellow-soft: #fef3c7;
+
+  --text-main: #0f172a;
+  --text-muted: #6b7280;
+  --text-hero: #e5f9ec;
+
+  --radius-lg: 1.25rem;
+  --radius-md: 0.75rem;
+
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.1);
+  --shadow-small: 0 4px 12px rgba(15, 23, 42, 0.08);
+
+  --container-width: 1100px;
+}
+
+/* ===== Disease result styles ===== */
+#result-disease {
+  font-size: 3rem;  /* Increase font size here */
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-top: 10px;
+  text-align: center;
+
+}
+
+#result-disease span {
+  font-size: 2rem; /* Larger font size for the disease name */
+}
+
+/* Example: Apply different font sizes based on disease */
+.potato_healthy {
+  font-size: 2.5rem; /* Make it larger for Healthy */
+  color: #16a34a; /* Green for Healthy */
+}
+
+.potato_early_blight {
+  font-size: 2.5rem; /* Make it larger for Early Blight */
+  color: #fbbf24; /* Yellow for Early Blight */
+}
+
+.potato_late_blight {
+  font-size: 2.5rem; /* Make it larger for Late Blight */
+  color: #ef4444; /* Red for Late Blight */
+}
+
+/* ===== Rest of the global styles (keeping as is) ===== */
+
+/* Body styling */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--bg);
+  color: var(--text-main);
+}
+
+/* Utility */
+.main {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.section {
+  margin-bottom: 3.5rem;
+}
+
+.section-header {
+  margin-bottom: 1.75rem;
+}
+
+.section-header h2 {
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.center {
+  text-align: center;
+}
+
+/* ===== Header ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-soft);
+  backdrop-filter: blur(10px);
+}
+
+.header-container {
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-box {
+  background-color: var(--green);
+  padding: 0.6rem;
+  border-radius: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.logo-text h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.logo-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0.1rem 0 0;
+}
+
+.header-nav {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  font-size: 1rem;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--green);
+}
+
+/* ===== Hero ===== */
+.hero-section {
+  background: linear-gradient(135deg, var(--bg-hero-from), var(--bg-hero-via), var(--bg-hero-to));
+  color: #ffffff;
+  padding: 3.5rem 1.25rem 4rem;
+}
+
+.hero-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-inner h2 {
+  font-size: 2.2rem;
+  margin: 0 0 0.9rem;
+}
+
+.hero-subtitle {
+  color: var(--text-hero);
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+}
+
+.hero-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1.25rem;
+}
+
+.feature-card {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 1.4rem 1.2rem;
+  backdrop-filter: blur(8px);
+}
+
+.feature-icon {
+  width: 2.7rem;
+  height: 2.7rem;
+  margin: 0 auto 0.6rem;
+  border-radius: 999px;
+  background-color: rgba(22, 163, 74, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.feature-card h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #e5f9ec;
+}
+
+/* ===== Upload Section ===== */
+.upload-container {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem 1.75rem;
+}
+
+.upload-dropzone {
+  position: relative;
+  border-radius: 1rem;
+  border: 2px dashed #d1d5db;
+  padding: 3rem 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.08s ease;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--green);
+  background-color: #f9fafb;
+  transform: translateY(-1px);
+}
+
+.upload-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-icon-wrapper {
+  background-color: var(--green-soft);
+  border-radius: 999px;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-icon {
+  font-size: 1.5rem;
+}
+
+.upload-text-main {
+  margin: 0 0 0.3rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.upload-text-sub {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.upload-tip {
+  margin-top: 1.4rem;
+  display: flex;
+  gap: 0.75rem;
+  background-color: #eff6ff;
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+}
+
+.tip-icon {
+  margin-top: 0.1rem;
+  font-size: 1.1rem;
+}
+
+.tip-title {
+  margin: 0 0 0.2rem;
+  font-size: 0.85rem;
+  color: #1d4ed8;
+}
+
+.tip-text {
+  margin: 0;
+  font-size: 0.83rem;
+  color: #1e40af;
+}
+
+/* ===== Results Card ===== */
+.result-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.result-header-left {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.result-header-right {
+  text-align: right;
+}
+
+.result-header-icon {
+  font-size: 24px;
+}
+
+.result-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.result-disease {
+  font-size: 2.5rem;  /* Larger font size for disease name */
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.result-section-inner {
+  margin-top: 20px;
+}
+
+.confidence-bar {
+  width: 100%;
+  height: 0.6rem;
+  background-color: #e5e7eb;
+  border-radius: 999px;
+  margin-top: 10px;
+  transition: all 1s ease-in-out;
+}
+
+.confidence-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+/* Confidence color */
+.confidence-fill-high {
+  background-color: #16a34a; /* Green */
+}
+
+.confidence-fill-medium {
+  background-color: #fbbf24; /* Yellow */
+}
+
+.confidence-fill-low {
+  background-color: #ef4444; /* Red */
+}
+
+/* Description & Treatment */
+.result-body,
+.result-treatment {
+  padding: 1.1rem 1.5rem;
+}
+
+.result-body h4,
+.result-treatment h4 {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+}
+
+.result-body p,
+.result-treatment p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.result-treatment {
+  background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+  border-top: 1px solid #bbf7d0;
+}
+
+.result-footer-note {
+  padding: 0.9rem 1.5rem 1.1rem;
+  border-top: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+.result-footer-note p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Disease Cards */
+.diseases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.disease-card {
+  background-color: var(--bg-card);
+  border-radius: 1rem;
+  padding: 1.4rem 1.3rem 1.35rem;
+  box-shadow: var(--shadow-small);
+  transition: box-shadow 0.18s ease, transform 0.08s ease;
+}
+
+.disease-card:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-2px);
+}
+
+.disease-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.7rem;
+  font-size: 1.35rem;
+}
+
+.disease-icon-yellow {
+  background-color: var(--yellow-soft);
+}
+
+.disease-icon-red {
+  background-color: var(--red-soft);
+}
+
+.disease-icon-green {
+  background-color: var(--green-soft);
+}
+
+.disease-card h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+}
+
+.disease-pathogen {
+  margin: 0 0 0.4rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.disease-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+/* About Section */
+.about-section {
+  margin-top: 2.2rem;
+  background: radial-gradient(circle at top left, #1e293b, #020617);
+  color: #e5e7eb;
+  border-radius: var(--radius-lg);
+  padding: 2.2rem 1.8rem;
+}
+
+.about-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-inner h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.4rem;
+}
+
+.about-inner p {
+  margin: 0 0 1.6rem;
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.about-stat {
+  text-align: center;
+}
+
+.stat-label {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.stat-value {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 2.5rem;
+}
+
+.footer-inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 1.8rem 1.25rem 2.2rem;
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-leaf {
+  font-size: 1.1rem;
+}
+
+.footer-title {
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.4rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid #e5e7eb;
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-nav {
+    display: none;
+  }
+
+  .hero-inner h2 {
+    font-size: 1.8rem;
+  }
+
+  .upload-container {
+    padding: 1.6rem 1.3rem;
+  }
+
+  .result-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.uploaded-image {
+  max-width: 500px;  /* Limit the width to 500px */
+  max-height: 500px; /* Limit the height to 500px */
+  width: auto;  /* Maintain aspect ratio */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+}

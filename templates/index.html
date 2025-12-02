@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PotatoCare – Potato Disease Classification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="header-main">
+        <div class="header-left">
+          <div class="logo-box">
+            <span class="logo-icon">🍃</span>
+          </div>
+          <div class="logo-text">
+            <h1>PotatoCare</h1>
+            <p class="logo-subtitle">ML-Powered Disease Classification</p>
+          </div>
+        </div>
+
+        <nav class="header-nav">
+          <a href="#analyze" class="nav-link">Analyze</a>
+          <a href="#diseases" class="nav-link">Diseases</a>
+          <a href="#about" class="nav-link">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-inner">
+        <h2>Potato Disease Classification with CNN</h2>
+        <p class="hero-subtitle">
+          Upload a photo of a potato leaf and get instant ML-powered analysis
+          with treatment recommendations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <main class="main">
+    <!-- Upload Section -->
+    <section id="analyze" class="section">
+      <div class="section-header center">
+        <h2>Analyze Potato Leaf</h2>
+        <p>Upload a clear image of the potato leaf for instant disease detection.</p>
+      </div>
+
+      <div class="upload-container">
+        <div class="upload-dropzone">
+          <div class="upload-icon-wrapper">
+            <span class="upload-icon">⬆️</span>
+          </div>
+          <p class="upload-text-main">
+            Drag and drop your image here, or click to browse.
+          </p>
+          <p class="upload-text-sub">
+            Supports JPG, PNG, (Max 10MB)
+          </p>
+
+          <input type="file" class="upload-input" id="fileInput" />
+        </div>
+
+        <!-- Image Preview Section -->
+        <div id="imagePreviewContainer" style="display:none;">
+          <h3>Uploaded Image</h3>
+          <img id="uploadedImage" src="" alt="Uploaded potato leaf image" class="uploaded-image" />
+        </div>
+
+        <div class="upload-tip">
+          <div class="tip-icon">📷</div>
+          <div>
+            <p class="tip-title">For best results:</p>
+            <p class="tip-text">
+              Capture the leaf in good lighting, ensure it's in focus, and include
+              the full affected area.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="section" style="display: none;">
+      <div class="result-card">
+        <div class="result-header">
+          <div class="result-header-left">
+            <div class="result-header-icon"></div>
+            <div>
+              <h3>Classification Result:</h3>
+              <p id="result-disease">Loading...</p>
+            </div>
+          </div>
+          <div class="result-header-right">
+            <p id="confidence-label">Confidence</p>
+            <p id="confidence-value">Loading...</p>
+          </div>
+        </div>
+
+        <div class="result-section-inner">
+          <div class="confidence-title">
+            <span class="confidence-icon">📈</span>
+            <span>Model Confidence</span>
+          </div>
+          <div class="confidence-bar">
+            <div id="confidence-bar" class="confidence-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="result-body">
+          <h4>Description</h4>
+          <p id="result-description">Loading...</p>
+        </div>
+
+        <div class="result-treatment">
+          <h4>Recommended Treatment</h4>
+          <p id="result-treatment">Loading...</p>
+        </div>
+
+        <!-- Note -->
+        <div class="result-footer-note">
+          <p>
+            <strong>Note:</strong> This ML prediction should be used as a guide.
+            For critical decisions, consult with an agricultural expert.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disease Cards -->
+    <section id="diseases" class="section">
+      <div class="section-header center">
+        <h2>Common Potato Diseases</h2>
+        <p>Learn about the diseases our model can detect.</p>
+      </div>
+
+      <div class="diseases-grid">
+        <div class="disease-card">
+          <div class="disease-icon disease-icon-yellow">💧</div>
+          <h3>Early Blight</h3>
+          <p class="disease-pathogen">Alternaria solani</p>
+          <p class="disease-text">
+            Dark brown spots with concentric rings on older leaves.
+          </p>
+        </div>
+
+        <div class="disease-card">
+          <div class="disease-icon disease-icon-red">🌬️</div>
+          <h3>Late Blight</h3>
+          <p class="disease-pathogen">Phytophthora infestans</p>
+          <p class="disease-text">
+            Water-soaked lesions that turn brown and spread rapidly.
+          </p>
+        </div>
+
+        <div class="disease-card">
+          <div class="disease-icon disease-icon-green">🍀</div>
+          <h3>Healthy Leaves</h3>
+          <p class="disease-pathogen">No disease</p>
+          <p class="disease-text">
+            Green, vigorous foliage with normal structure.
+          </p>
+        </div>
+      </div>
+
+      <!-- About Model -->
+      <div id="about" class="about-section">
+        <div class="about-inner">
+          <h3>About Our CNN Model</h3>
+          <p>
+            Our Convolutional Neural Network (CNN) has been trained on thousands of
+            potato leaf images to accurately identify disease patterns. The model
+            analyzes features like color variations, texture, and lesion patterns to
+            provide reliable predictions with confidence scores.
+          </p>
+
+          <div class="about-stats">
+            <div class="about-stat">
+              <p class="stat-label">Accuracy</p>
+              <p class="stat-value">95.3%</p>
+            </div>
+            <div class="about-stat">
+              <p class="stat-label">Images</p>
+              <p class="stat-value">10,000+</p>
+            </div>
+            <div class="about-stat">
+              <p class="stat-label">Classes</p>
+              <p class="stat-value">3</p>
+            </div>
+            <div class="about-stat">
+              <p class="stat-label">Speed</p>
+              <p class="stat-value">&lt; 2s</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-leaf">🍃</span>
+        <span class="footer-title">PotatoCare</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/js/script.js"></script> 
+</body>
+</html>
